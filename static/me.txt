@@ -1,1 +1,7 @@
-I'm currently a Junior at University of Illinois At Urbana Champiagn studying Computer Science. This semester (SP19), I studied data mining, programming languages, and social data visualizations. Next semester (FA19), I plan on studying computational photography, natural language processing, and computer security.
+I'm currently a Junior at University of Illinois At Urbana Champiagn studying Computer Science. 
+I'm currently interested in most things revolving around big data; that is, discovering insights, learning statistical models, creating cool visualizations, and other things!
+I'm also interested in a bunch of things I have very limited experience in, like computer vision and augmented reality.
+However, if you were to ask me what topic I would do potentially write a thesis about, I wouldn't be able to tell you since I'm still trying to pinpoint the topic that really resonates with me -- but I'll be sure to update this once I find out! 
+This semester (SP19), I studied data mining, programming languages, and social data visualizations. 
+Next semester (FA19), I plan on studying computational photography, natural language processing, and computer security.
+In my free time (and when I'm not writing more code), I enjoy going to the gym, playing soccer, and beating my roommate at Smash Ultimate.
