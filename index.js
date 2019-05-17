@@ -12,6 +12,36 @@ bioPic.onclick = () => {
     bioPic.src = normal ? "/images/me.jpg" : "/images/me2.jpg";
 }
 
+let langDescription = document.getElementById("lang-description");
+
+let createProgLangElement = (name) => {
+    let img = document.createElement("img");
+    img.className = "ui image"; // set semantic ui
+    img.src = "images/icons/"+name+".png";
+    return img;
+}
+
+let createSkills = (langInfo) => {
+    let knowLangs = document.getElementById("knowlang-icons");
+    ["python", "java"].forEach((n) => {
+        let img = createProgLangElement(n);
+        img.onclick = () => langDescription.textContent = langDescription.textContent.length ? "" : langInfo[n];
+        knowLangs.appendChild(img);
+    });
+
+    let betterLangs = document.getElementById("betterlang-icons");
+    ["cpp", "haskell", "javascript"].forEach((n) => {
+        let img = createProgLangElement(n);
+        img.onclick = () => langDescription.textContent = langDescription.textContent.length ? "" : langInfo[n];
+        betterLangs.appendChild(img);
+    });
+}
+
+fetch("/static/langinformation.json")
+    .then(r => r.json())
+    .then(langInfo => createSkills(langInfo));
+
+
 // link buttons
 let ghUrl = 'https://www.github.com/alz2';
 let ghButton = document.getElementById("gh-btn");
