@@ -47,7 +47,7 @@ let ghUrl = 'https://www.github.com/alz2';
 let ghButton = document.getElementById("gh-btn");
 ghButton.onclick = () => { window.open(ghUrl, '_blank') };
 
-let resumeUrl = 'https://drive.google.com/file/d/1fABcEKgHp-9dXZGNe8BKLDGa5c4MTJK2/view?usp=sharing';
+let resumeUrl = 'https://drive.google.com/file/d/1bmg1xnwopi6k7H5JQBNOH84-IG1Tya0b/view?usp=sharing';
 let resumeButton = document.getElementById("resume-btn");
 resumeButton.onclick = () => { window.open(resumeUrl, '_blank') }
 
