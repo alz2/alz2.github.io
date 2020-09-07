@@ -1,7 +1,39 @@
 // Modulate Profile Picture on click.
-var normal_profile_pic = true;
-let bio_img = document.getElementById("bio-pic");
-bio_img.onclick = () => {
-    normal_profile_pic = !normal_profile_pic;
-    bio_img.src = normal_profile_pic ? "assets/images/profile.jpg" : "assets/images/profile2.jpg";
+let normalProfilePic = true;
+let bioImg = document.getElementById("bio-pic");
+bioImg.onclick =
+    () => {
+      normalProfilePic = !normalProfilePic;
+      bioImg.src = normalProfilePic ? "assets/images/profile.jpg"
+                                    : "assets/images/profile2.jpg";
+    }
+
+// Firebase configuration.
+// https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public
+var firebaseConfig = {
+  apiKey : "AIzaSyC2ZfdG4OeGSB94NWmQyfX8tZWT7vLb85Y",
+  authDomain : "personalwebsitevisitorstats.firebaseapp.com",
+  databaseURL : "https://personalwebsitevisitorstats.firebaseio.com",
+  projectId : "personalwebsitevisitorstats",
+  storageBucket : "personalwebsitevisitorstats.appspot.com",
+  messagingSenderId : "558349611639",
+  appId : "1:558349611639:web:5934c30c0a742ecdca8c72",
+  measurementId : "G-Z0FKR289DS"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var db = firebase.database();
+
+function IncrementLocationCount(country, state) {
+  const locKey = country + '-' + state;
+  db.ref('visitors/' + locKey)
+      .child("count")
+      .set(firebase.database.ServerValue.increment(1));
 }
+
+// Retrieve Geo data based on IP and then increment location in firebase.
+const ipGeoLookup = "https://ipapi.co/json/";
+fetch(ipGeoLookup)
+    .then(response => response.json())
+    .then(data => IncrementLocationCount(data.country, data.region_code))
