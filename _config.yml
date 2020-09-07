@@ -102,7 +102,9 @@ pagination:
 # show-author: true
 
 # do you want some animations?
-# animation: true
+animation: true
+
+visitors: true
 
 # add default values to specific pages or layouts
 defaults:

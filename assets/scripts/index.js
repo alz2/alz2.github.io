@@ -53,4 +53,4 @@ const ipGeoLookup = "https://ipapi.co/json/";
 fetch(ipGeoLookup).then(response => response.json()).then(data => {
   IncrementLocationCount(data.country, data.region_code);
   LogCities(data.country, data.region_code, data.city);
-})
+});
