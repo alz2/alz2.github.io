@@ -32,8 +32,25 @@ function IncrementLocationCount(country, state) {
       .set(firebase.database.ServerValue.increment(1));
 }
 
+function LogCities(country, state, city) {
+  function GetDateTime() {
+    let today = new Date();
+    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' +
+               today.getDate();
+    let time =
+        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    return date + ' ' + time;
+  }
+
+  const locKey = country + '-' + state;
+  let visitRef = db.ref('cities/' + locKey + '/' + city.toUpperCase()).push();
+  visitRef.set({time : GetDateTime()});
+}
+
 // Retrieve Geo data based on IP and then increment location in firebase.
+// Additionally log a city with time information.
 const ipGeoLookup = "https://ipapi.co/json/";
-fetch(ipGeoLookup)
-    .then(response => response.json())
-    .then(data => IncrementLocationCount(data.country, data.region_code))
+fetch(ipGeoLookup).then(response => response.json()).then(data => {
+  IncrementLocationCount(data.country, data.region_code);
+  LogCities(data.country, data.region_code, data.city);
+})
