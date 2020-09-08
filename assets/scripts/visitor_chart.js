@@ -86,7 +86,9 @@ visitorsRef.once("value", function(snapshot) {
   // list of objects looking like {id : "US-NM", value : 1819046}
   let visitorChartData = [];
   snapshot.forEach(function(child) {
-    visitorChartData.push({id : child.key, value : child.val().count});
+    if (child.key.startsWith("US-")) {
+      visitorChartData.push({id : child.key, value : child.val().count});
+    }
   });
   am4core.ready(() => CreateVisitorHeatMap(visitorChartData));
 });
